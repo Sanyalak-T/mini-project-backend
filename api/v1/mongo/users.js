@@ -232,8 +232,10 @@ router.post("/auth/cookie/login", async (req, res) => {
 
     res.cookie("accessToken", token, {
       httpOnly: true,
-      secure: isProd, //only send over HTTPS in prod
-      sameSite: isProd ? "none" : "lax",
+      //secure: isProd, //only send over HTTPS in prod
+      // sameSite: isProd ? "none" : "lax",
+      secure: true,
+      sameSite: "None",
       path: "/",
       maxAge: 60 * 60 * 1000, //1 hour
     });

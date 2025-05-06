@@ -43,7 +43,7 @@ POST http://localhost:3030/mongo/auth/login
 Content-Type: application/json
 
 {
-  "email": "sanya@gmail.com",
+  "email": "smith@gmail.com",
   "password": "12345"
 }
 
