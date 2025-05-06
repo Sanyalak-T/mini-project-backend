@@ -1,0 +1,70 @@
+### get users
+GET http://localhost:3030/mongo/users
+
+### get a user by ID
+GET http://localhost:3030/mongo/users/6818d1e950f50cf42e13173d
+
+# ### get a public profile
+# GET http://localhost:3030/mongo/public-profile/6818d1e950f50cf42e13173d
+
+### create a user
+POST http://localhost:3030/mongo/users
+Content-Type: application/json
+
+{
+    "fullName": "Smith",
+    "email": "smith@gmail.com"
+}
+
+### update a user
+PUT http://localhost:3030/mongo/users/68167b509fcd92a9a93599cd
+Content-Type: application/json
+
+{
+    "fullName": "Mr.Smith",
+    "email": "smith@gmail.com"
+}
+
+### detele a user by ID
+DELETE http://localhost:3030/mongo/users/680e4ddbbd14e76c6af45c2f
+
+### user route - register a new user
+POST http://localhost:3030/mongo/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "email": "john@gmail.com",
+  "password": "12345"
+}
+
+### User route - Login with the registered user
+POST http://localhost:3030/mongo/auth/login
+Content-Type: application/json
+
+{
+  "email": "sanya@gmail.com",
+  "password": "12345"
+}
+
+### User route - Get User Profile
+### this way auth have to use cookie => can use
+GET http://localhost:3030/mongo/auth/profile
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE4ZDFlOTUwZjUwY2Y0MmUxMzE3M2QiLCJpYXQiOjE3NDY1MDU3ODgsImV4cCI6MTc0NjUwOTM4OH0.EX4q1lrH7qvmefjF7MtIlsMpnmMoWR5KcBHRLHB7zsM
+
+### this way auth have to use Authorization: Bearer => can use
+GET http://localhost:3030/mongo/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE4ZDFlOTUwZjUwY2Y0MmUxMzE3M2QiLCJpYXQiOjE3NDY1MDU0ODksImV4cCI6MTc0NjUwOTA4OX0.-kcgIo_gZcK-lLtyqs8lhGLYDG6VzPbGKrkt75UQ3XA
+
+### User route - Login with the registered user => can use
+POST http://localhost:3030/mongo/auth/cookie/login
+Content-Type: application/json
+
+{
+  "email": "sanya@gmail.com",
+  "password": "12345"
+}
+
+### Test route - Verify the token (replace <TOKEN> with the token from the login response) => token is valid
+GET http://localhost:3030/mongo/auth/verify
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE4ZDFlOTUwZjUwY2Y0MmUxMzE3M2QiLCJpYXQiOjE3NDY1MDU3ODgsImV4cCI6MTc0NjUwOTM4OH0.EX4q1lrH7qvmefjF7MtIlsMpnmMoWR5KcBHRLHB7zsM

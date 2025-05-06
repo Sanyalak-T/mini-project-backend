@@ -1,0 +1,95 @@
+### get all users
+GET http://localhost:3030/mongo/users
+
+### create a new user
+POST http://localhost:3030/mongo/users
+Content-Type: application/json
+
+{
+    "name": "Test Person2",
+    "email": "testperson2@gmail.com"
+}
+
+### update a user
+PUT http://localhost:3030/mongo/users/6809f717bc0dcdf9756c40d3
+Content-Type: application/json
+
+{
+    "name": "Person2",
+    "email": "testperson2@gmail.com"
+}
+
+### detele a user
+DELETE http://localhost:3030/mongo/users/6809f717bc0dcdf9756c40d3
+
+
+### get all notes
+GET http://localhost:3030/mongo/notes
+
+### create a note
+POST  http://localhost:3030/mongo/notes
+Content-Type: application/json
+
+{
+    "title": "test person2",
+    "content": "testperson testperson2",
+    "tags": ["notejs", "express"],
+    "isPinned": false,
+    "userId": "6809c868b98630ccbc860205"
+}
+
+### update a note
+PUT http://localhost:3030/mongo/notes/680a00df13233644eabdacf5
+Content-Type: application/json
+
+{
+    "title": "test person2",
+    "content": "testperson testperson2",
+    "tags": ["notejs", "express"],
+    "isPinned": false,
+    "userId": "6809c868b98630ccbc860205"
+}
+
+### delete a note
+DELETE http://localhost:3030/mongo/notes/680a00df13233644eabdacf5
+
+
+### ......................... ###
+
+### register a new user
+POST http://localhost:3030/mongo/auth/register
+Content-Type: application/json
+
+{
+    "fullName": "Jany Doe",
+    "email": "Jany@gmail.com",
+    "password": "jany12345"
+}
+
+### login with the registered user
+POST http://localhost:3030/mongo/auth/login
+Content-Type: application/json
+
+{
+    "email": "Jany@gmail.com",
+    "password": "jany12345"
+}
+
+### add a new note (protected route)
+POST http://localhost:3030/mongo/add-note
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiMzkyMjlmMzg1NjIxMzI5YmMyNjciLCJpYXQiOjE3NDU1NjYwMTUsImV4cCI6MTc0NTU2OTYxNX0.pKBpy5b6bIfoztSAdhfQSUqG7656rNMYhxDmSaJd0iY
+
+{
+    "title": "Funny's note",
+    "content": "This is a funny note at thailand.",
+    "tages": ["important", "today"]
+}
+
+### get all notes for the login user
+GET http://localhost:3030/mongo/add-all-notes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiMzkyMjlmMzg1NjIxMzI5YmMyNjciLCJpYXQiOjE3NDU1NjYwMTUsImV4cCI6MTc0NTU2OTYxNX0.pKBpy5b6bIfoztSAdhfQSUqG7656rNMYhxDmSaJd0iY
+
+### search notes
+GET http://localhost:3030/mongo/search-notes?query=thailand
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiMzkyMjlmMzg1NjIxMzI5YmMyNjciLCJpYXQiOjE3NDU1NjYwMTUsImV4cCI6MTc0NTU2OTYxNX0.pKBpy5b6bIfoztSAdhfQSUqG7656rNMYhxDmSaJd0iY

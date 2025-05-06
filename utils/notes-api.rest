@@ -1,0 +1,91 @@
+### get notes and unprotected route
+GET http://localhost:3030/mongo/notes
+
+### get a note by ID
+GET http://localhost:3030/mongo/notes/6809db9b2cf64bf9a203ed64
+
+### create a user
+POST http://localhost:3030/mongo/notes
+Content-Type: application/json
+
+{
+    "title": "tonight it's long time",
+    "content": "Love expressjs",
+    "tags": ["personal", "draft"],
+    "is_pinned": true,
+    "userId": "6809c868b98630ccbc860205"
+}
+
+### update a user
+PUT http://localhost:3030/mongo/notes/6809db9b2cf64bf9a203ed64
+Content-Type: application/json
+
+{
+    "title": "new express",
+    "content": "new express content"
+}
+
+### detele a user by ID
+DELETE http://localhost:3030/mongo/notes/680b3a20cd1dd909b4d601e8
+
+
+#..................................................#
+#..................................................#
+#..................................................#
+
+### Create a new note (protected route + user id required)
+POST http://localhost:3030/mongo/notes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE3YWJhZWZlZjRiY2EzOTBhYmVmZjMiLCJpYXQiOjE3NDYzODMxMTgsImV4cCI6MTc0NjM4NjcxOH0.gv234Z-kk3yMH5wVmBII5NMTyoMT655o6eAX1pfhdUM
+
+{
+  "title": "My First Note",
+  "content": "This is the content of my first note.",
+  "tags": ["personal", "important"],
+  "isPinned": false,
+  "userId": "6809c868b98630ccbc860205"
+}
+
+### Add a new note (protected route)
+POST http://localhost:3030/mongo/add-note
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE3YWJhZWZlZjRiY2EzOTBhYmVmZjMiLCJpYXQiOjE3NDY0MzY5MzksImV4cCI6MTc0NjQ0MDUzOX0.4GfBYXDROtrx-1h3xwtKjIDqNkxC8Zki4lPBhmHXH_s
+
+{
+  "title": "Imagine Big Pig",
+  "content": "This is the content of big pig.",
+  "tags": ["work", "urgent"]
+}
+
+### edit a note
+PUT http://localhost:3030/mongo/edit-note/6817cc9a395c65fba22b3383
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE3YWJhZWZlZjRiY2EzOTBhYmVmZjMiLCJpYXQiOjE3NDY0MzY5MzksImV4cCI6MTc0NjQ0MDUzOX0.4GfBYXDROtrx-1h3xwtKjIDqNkxC8Zki4lPBhmHXH_s
+
+{
+  "title": "Updated Note Title",
+  "content": "Updated content for the note.",
+  "tags": ["updated", "work"],
+  "isPinned": true
+}
+
+### update pinned status of a note
+PUT http://localhost:3030/mongo/update-note-pinned/6817cc9a395c65fba22b3383
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE3YWJhZWZlZjRiY2EzOTBhYmVmZjMiLCJpYXQiOjE3NDY0MzY5MzksImV4cCI6MTc0NjQ0MDUzOX0.4GfBYXDROtrx-1h3xwtKjIDqNkxC8Zki4lPBhmHXH_s
+
+{
+  "isPinned": false
+}
+
+### Get all notes for the authenticated user
+GET http://localhost:3030/mongo/get-all-notes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE3YWJhZWZlZjRiY2EzOTBhYmVmZjMiLCJpYXQiOjE3NDY0MzY5MzksImV4cCI6MTc0NjQ0MDUzOX0.4GfBYXDROtrx-1h3xwtKjIDqNkxC8Zki4lPBhmHXH_s
+
+### delete a note
+DELETE http://localhost:3030/mongo/delete-note/681889bae64e41d79f677fb9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE3YWJhZWZlZjRiY2EzOTBhYmVmZjMiLCJpYXQiOjE3NDY0MzY5MzksImV4cCI6MTc0NjQ0MDUzOX0.4GfBYXDROtrx-1h3xwtKjIDqNkxC8Zki4lPBhmHXH_s
+
+### search notes
+GET http://localhost:3030/mongo/search-notes?query=work
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE3YWJhZWZlZjRiY2EzOTBhYmVmZjMiLCJpYXQiOjE3NDY0MzY5MzksImV4cCI6MTc0NjQ0MDUzOX0.4GfBYXDROtrx-1h3xwtKjIDqNkxC8Zki4lPBhmHXH_s

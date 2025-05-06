@@ -1,0 +1,6 @@
+### get a public profile
+GET http://localhost:3030/mongo/public-profile/6818d1e950f50cf42e13173d
+
+
+### new get public notes for a user
+GET http://localhost:3030/mongo/public-notes/6818d1e950f50cf42e13173d
