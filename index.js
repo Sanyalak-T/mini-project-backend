@@ -20,7 +20,7 @@ app.use(helmet());
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-    "https://mini-project-frontend-navy.vercel.app/",
+    "https://mini-project-frontend-navy.vercel.app",
   ], //your frontend domain
   credentials: true, //allow cookies to be sent
 };
